@@ -1,0 +1,9 @@
+1. create new connection: amqp_new_connection();
+2. create new ssl/normal socket with input connection:amqp_ssl_socket_new()/amqp_tcp_socket_new()
+3. Verify socket peer and verify hostname with input value is new socket(Using only for SSL connection sercurity):amqp_ssl_socket_set_verify_peer() -> amqp_ssl_socket_set_verify_hostname()
+4. Open socket for hostname, port, new socket: amqp_socket_open_noblock(socket,hostname, port, timeout)(Using only for SSL/TLS connection)/amqp_socket_open(socket, hostname, port)(using for normal connection).
+5. Loging to server: amqp_login(amqp_connection_state_t state, char const *vhost,
+                            int channel_max, int frame_max, int heartbeat,
+                            int sasl_method, const char *user_name, const char *password)
+6. Close connection: amqp_connection_close(connection, AMQP_REPLY_SUCCESS)
+7. Detroy connection: amqp_destroy_connection(connection).
